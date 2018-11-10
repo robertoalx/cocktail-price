@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import AddCocktail from './AddCocktail'
 import axios from 'axios'
 
 const BASE_URL = 'http://localhost:3455/'
@@ -26,7 +27,10 @@ class Cocktail extends Component {
 
     render() {
         return (
-            <h2>{this.state.cocktail.map(cocktail => <h4>{cocktail.name}</h4>)}</h2>
+            [
+            <h2>{this.state.cocktail.map(cocktail => <h3>{cocktail.name}</h3>)}</h2>,
+            <AddCocktail />
+        ]
         )
     }
 }
