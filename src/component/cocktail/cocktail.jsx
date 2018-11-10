@@ -26,7 +26,7 @@ class Cocktail extends Component {
 
     render() {
         return (
-            <h2>{this.state.cocktail.length}</h2>
+            <h2>{this.state.cocktail.map(cocktail => <h4>{cocktail.name}</h4>)}</h2>
         )
     }
 }
