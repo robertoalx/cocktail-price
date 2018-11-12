@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import AddCocktail from './AddCocktail'
+import { BASE_URL } from './const'
 import axios from 'axios'
-
-const BASE_URL = 'http://localhost:3455/'
 
 class Cocktail extends Component {
 
@@ -25,11 +24,15 @@ class Cocktail extends Component {
         this.getCocktail()
     }
 
+    AddCocktailToState(something) {
+        console.log(`And this will be saved ${something}` )
+    }
+
     render() {
         return (
             [
-            <h2>{this.state.cocktail.map(cocktail => <h3>{cocktail.name}</h3>)}</h2>,
-            <AddCocktail />
+            <div>{this.state.cocktail.map(cocktail => <p>{cocktail.name}</p>)}</div>,
+            <AddCocktail  sri={this.AddCocktailToState} />
         ]
         )
     }
