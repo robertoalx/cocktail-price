@@ -12,7 +12,6 @@ class Cocktail extends Component {
     async getCocktail() {
             let {data} = await axios.get(`${BASE_URL}cocktail`)
             this.setState({cocktail:data})
-
     }
 
     componentDidMount() {
@@ -24,16 +23,28 @@ class Cocktail extends Component {
         this.getCocktail()
     }
 
-    AddCocktailToState(something) {
-        console.log(`And this will be saved ${something}` )
+    AddCocktailToState = something => {
+        console.log(`And this will be saved: ${something}` )
+        this.setState({
+            cocktail: [...this.state.cocktail, {
+                id: this.state.cocktail.length +1,
+                name: something
+            }]
+        })
+        console.log(this.state.cocktail)
+    }
+
+    renderCocktail = () => {
+        return this.state.cocktail.map((cocktail, key) => <p key={key}>{cocktail.name}</p>)
     }
 
     render() {
         return (
-            [
-            <div>{this.state.cocktail.map(cocktail => <p>{cocktail.name}</p>)}</div>,
-            <AddCocktail  sri={this.AddCocktailToState} />
-        ]
+            <div>
+                <div>{this.renderCocktail()}</div>
+                <AddCocktail  sri={this.AddCocktailToState} />
+            </div>
+            
         )
     }
 }
