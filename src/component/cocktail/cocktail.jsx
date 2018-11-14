@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import AddCocktail from './AddCocktail'
 import { BASE_URL } from './const'
 import axios from 'axios'
+import './cocktail.css'
 
 class Cocktail extends Component {
 
@@ -35,7 +36,25 @@ class Cocktail extends Component {
     }
 
     renderCocktail = () => {
-        return this.state.cocktail.map((cocktail, key) => <p key={key}>{cocktail.name}</p>)
+        return this
+                .state
+                .cocktail
+                .map((cocktail, key) =>
+                <p key={key} className='cocktail-item'>
+                    <span>{cocktail.name}</span>
+                    <span
+                        onClick={() => this.handleClick(cocktail.id)}>
+                        &times;
+                    </span>
+                </p>)
+    }
+
+    async handleClick(id) {
+        console.log(id);
+        await axios.delete(`${BASE_URL}cocktail`,
+                            id
+        )
+
     }
 
     render() {

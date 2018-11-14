@@ -10,7 +10,7 @@ class AddCocktail extends Component {
     }
 
 
-    async  pushCocktail() {
+    async pushCocktail() {
         try{
             await axios
             .post(
@@ -23,9 +23,19 @@ class AddCocktail extends Component {
                 }
                 )
             this.props.sri(this.input.value)
+            // When The Save me is clicked we reset the input value to nothing
+            this.input.value = ''
+            // can continue add value inside the input without clicking again to regain focus.
+            this.input.focus()
         } catch (e) {
 
     }
+    }
+
+    handleClick = (event) => {
+        if (event.keyCode === 13) {
+            this.pushCocktail()
+        }
     }
 
     render() {
@@ -33,7 +43,9 @@ class AddCocktail extends Component {
             <div>
                 <input
                     // ref is reference to the DOM element
-                    ref={ele => this.input = ele}/>
+                    ref={ele => this.input = ele}
+                    onKeyDown={this.handleClick}
+                />
                 <button
                     onClick={this.pushCocktail}>
                     Save me
