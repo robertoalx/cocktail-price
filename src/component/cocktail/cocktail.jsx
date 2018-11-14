@@ -43,18 +43,18 @@ class Cocktail extends Component {
                 <p key={key} className='cocktail-item'>
                     <span>{cocktail.name}</span>
                     <span
-                        onClick={() => this.handleClick(cocktail.id)}>
+                        onClick={() => this.deleteCocktail(cocktail.id)}>
                         &times;
                     </span>
                 </p>)
     }
 
-    async handleClick(id) {
+    async deleteCocktail(id) {
         console.log(id);
-        await axios.delete(`${BASE_URL}cocktail`,
-                            id
-        )
-
+        await axios.delete(`${BASE_URL}cocktail/${id}`, {
+            'Content-Type': 'application/json',
+            method: 'DELETE'
+        })
     }
 
     render() {
