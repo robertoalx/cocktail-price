@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Cocktail from './component/cocktail'
+import Ingredient from './component/ingredient'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>We can do it!</h1>
+        <h1>Manage Ingredients</h1>
+        <Ingredient /> 
+        <h1>Manage Cocktail</h1>
         <Cocktail />
       </div>
     );

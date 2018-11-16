@@ -1,0 +1,15 @@
+.full-table {
+    width: 100%;
+    border-collapse: collapse
+}
+
+.full-table  thead td{
+background-color: aqua
+}
+
+.full-table  tbody tr:nth-child(odd){
+background-color: lightseagreen;
+font-weight: bold;
+color: white;
+padding: 0.8rem
+}
