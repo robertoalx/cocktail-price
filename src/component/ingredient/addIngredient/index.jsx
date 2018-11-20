@@ -1,3 +1,3 @@
-import AddIngredient from './addIngredient.jsx'
+import addIngredient from './addIngredient.jsx'
 
-export default AddIngredient
+export default addIngredient
