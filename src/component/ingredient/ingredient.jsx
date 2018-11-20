@@ -70,8 +70,9 @@ class Ingredient extends Component{
             data[simpleName] = (simpleName === 'price' || simpleName === 'quantity') ?
                 parseInt(this.state.formValueList[ingredientName].value, 10) :
                 this.state.formValueList[ingredientName].value;
-        })
-        data.id = this.state.ingredient.length =1
+            return console.log(simpleName)
+        });
+        data.id = this.state.ingredient.length +1
         this.createIngredientInDataBase(data)
     }
 
@@ -81,17 +82,17 @@ class Ingredient extends Component{
              ...data,
              method: 'PUT'
          }).then(result => {
-             console.log(result)
+             console.log(result);
              debugger
          }, error => {
-             console.error(error)
+             console.error(error);
              debugger
          })
     }
 
     updateStatewithForm = (aParam) => {
         aParam.preventDefault();
-        const {id, value, validity: {valid}} = aParam.target;
+        const {id, value, validity: {valid}} = aParam.target
         if (id === 'create-it') {
             this.createIngredient()
         }
@@ -105,18 +106,19 @@ class Ingredient extends Component{
         this.setState({formValueList})
         this.checkIfFormIsValid()
 
-        console.group();
-        console.log(aParam.target.id)
-        console.log(aParam.target.value)
-        console.log(valid)
-        console.groupEnd();
+        // console.group();
+        // console.log(aParam.target.id)
+        // console.log(aParam.target.value)
+        // console.log(valid)
+        // console.groupEnd();
     }
 
  
     render() {
         const { validForm } = this.state
         return (
-            [<table className="full-table">
+            [<h1>Manage Ingredient</h1>,
+            <table className="full-table">
                 <thead>
                     <tr>
                         <td>ID</td>
